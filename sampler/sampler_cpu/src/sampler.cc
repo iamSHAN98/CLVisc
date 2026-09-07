@@ -830,8 +830,8 @@ namespace {
                 cosheta = cosh(ele.etas);
                 sinheta = sinh(ele.etas);
                 position.set_x0(ele.position[0]);
-                position.set_x1(ele.position[1]);
-                position.set_x2(ele.position[2]);
+                // position.set_x1(ele.position[1]);
+                // position.set_x2(ele.position[2]);
                 position.set_x3(ele.position[3]);
             }
 
@@ -840,6 +840,9 @@ namespace {
 
             /* nid: Determine the particle type from discrete distribution*/
             for ( int sampled_hadrons = 0; sampled_hadrons < Ni; sampled_hadrons++ ) {
+                position.set_x1(Random::uniform(ele.position[1] - 0.001, ele.position[1] + 0.001));
+                position.set_x2(Random::uniform(ele.position[2] - 0.001, ele.position[2] + 0.001));
+
                 int nid = draw_hadron_type_();
                 double mass = list_hadrons_.at(nid).mass;
                 int pdg = list_hadrons_.at(nid).pdgcode;

@@ -163,7 +163,9 @@ int main(int argc, char ** argv) {
        NTOT = NTOT+ sampler.particles_.size();
        std::clog << nevent << "...";
        int particle_number = 0;
-       
+
+       fpmag << "# event " << nevent << " out 0\n";
+
        for ( const auto & par : sampler.particles_ ) {
            int nid = sampler.newpid[par.pdgcode];
            if ( sampler.list_hadrons_.at(nid).stable &&
@@ -204,7 +206,7 @@ int main(int argc, char ** argv) {
 
        sampler.particles_.clear();
        std::cout << "#finished" << std::endl;
-       fpmag << "# event "<<nevent<<" end"<<std::endl;
+       fpmag << "# event "<<nevent<<" end 0 impact 0"<<std::endl;
        }
        fpmag.close();
     

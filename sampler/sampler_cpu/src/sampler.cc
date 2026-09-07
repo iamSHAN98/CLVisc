@@ -985,8 +985,10 @@ namespace {
         std::stringstream fname_particle_list;
         fname_particle_list << fpath << "/mc_particle_list" << fileid;
         std::ofstream fpmag(fname_particle_list.str());
-        
-        
+
+        fpmag << "#!OSCAR2013 particle_lists t x y z mass p0 px py pz pdg ID charge\n";
+        fpmag << "# Units: fm fm fm fm GeV GeV GeV GeV GeV none none none\n";
+
         std::stringstream fname_particle_list_before;
         fname_particle_list_before<<fpath<<"/before/mc_particle_list"<<fileid;
         std::ifstream ftherm(fname_particle_list_before.str());
@@ -1001,7 +1003,11 @@ namespace {
             
             std::istringstream instream;
 	        std::string line;
-            
+
+            // Skip OSCAR2013 Header
+            for(int Skip = 0; Skip < 2; Skip++)
+                getline(ftherm, line);
+
 	        while(ftherm.good()){
             
 
@@ -1087,7 +1093,7 @@ namespace {
                     }
                 }
 
-                fpmag<<"# event " << eventid<< " end"<<std::endl;
+                fpmag<<"# event " << eventid<< " end 0 impact 0"<<std::endl;
                 particles_.clear();
                 eventid++;
 		   }

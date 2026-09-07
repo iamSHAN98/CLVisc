@@ -49,6 +49,8 @@ double ParticleType::sample_momentum(double temperature){
         }
         pmag = sample_momenta1(newT, mass);
     }
+
+  return pmag;
 }
 
 } // namespace Smash

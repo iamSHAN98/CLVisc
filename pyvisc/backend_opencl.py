@@ -5,8 +5,9 @@ __email__ = 'sailfish-cfd@googlegroups.com'
 __license__ = 'LGPL3'
 
 # Make sure the pyopencl module exists, but do not import it.
-import imp
-imp.find_module('pyopencl')
+import importlib
+importlib.import_module('pyopencl')
+
 import operator
 import os
 import numpy as np

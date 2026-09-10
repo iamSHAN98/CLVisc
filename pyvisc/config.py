@@ -36,13 +36,13 @@ def write_config(configs, comments=''):
 
 
 
-        Config.set('initial_condition', 'reduced_thickness', configs.reduced_thickness)
-        Config.set('initial_condition', 'fluctuation', configs.fluctuation)
-        Config.set('initial_condition', 'nucleon_width', configs.nucleon_width)
-        Config.set('initial_condition', 'constit_width', configs.constit_width)
-        Config.set('initial_condition', 'constit_number', configs.constit_number)
-        Config.set('initial_condition', 'nucleon_min_dist', configs.nucleon_min_dist)
-        Config.set('initial_condition', 'normalization', configs.normalization)
+        Config.set('initial_condition', 'reduced_thickness', str(configs.reduced_thickness))
+        Config.set('initial_condition', 'fluctuation', str(configs.fluctuation))
+        Config.set('initial_condition', 'nucleon_width', str(configs.nucleon_width))
+        Config.set('initial_condition', 'constit_width', str(configs.constit_width))
+        Config.set('initial_condition', 'constit_number', str(configs.constit_number))
+        Config.set('initial_condition', 'nucleon_min_dist', str(configs.nucleon_min_dist))
+        Config.set('initial_condition', 'normalization', str(configs.normalization))
 
 
 

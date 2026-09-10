@@ -537,7 +537,7 @@ class CLVisc(object):
                     f.create_dataset("omega_accT",data = self.h_omega_accT.reshape(self.size,6))
                     f.create_dataset("omega_chemical",data = self.h_omega_chemical.reshape(self.size,6))
                 if self.cfg.corona:
-                    call(["./cornelius/main","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%self.tau_old,"0","1","1"])
+                    call(["./cornelius","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%self.tau_old,"0","1","1"])
             
             else:
                 with h5py.File(outpath,"w") as f:
@@ -547,7 +547,7 @@ class CLVisc(object):
                     f.create_dataset("bulkpr",data = self.h_bulkpr.reshape(self.size,1))
                     f.create_dataset("nbmutp",data = self.h_nbmutp)
                 if self.cfg.corona:
-                    call(["./cornelius/main","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%self.tau_old,"0","1","0"])
+                    call(["./cornelius","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%self.tau_old,"0","1","0"])
             
 
                 
@@ -591,7 +591,7 @@ class CLVisc(object):
                 header_flag = n//ntskip - 1
                 if self.cfg.corona:
                     header_flag = 1 
-                call(["./cornelius/main","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%tau_new,"%d"%header_flag,"0","1"])
+                call(["./cornelius","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%tau_new,"%d"%header_flag,"0","1"])
             else:
                 with h5py.File(outpath,"w") as f:
                     f.create_dataset("ev",data = self.h_ev1)
@@ -602,7 +602,7 @@ class CLVisc(object):
                 header_flag = n//ntskip - 1
                 if self.cfg.corona:
                     header_flag = 1 
-                call(["./cornelius/main","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%tau_new,"%d"%header_flag,"0","0"])
+                call(["./cornelius","%s"%self.cfg.fPathOut,"%s"%self.tau_old,"%s"%tau_new,"%d"%header_flag,"0","0"])
             call(["mv",os.path.join(self.cfg.fPathOut,"bulk_curr.h5"),os.path.join(self.cfg.fPathOut,"bulk_prev.h5")])
             if is_finished:
                 call(["rm",os.path.join(self.cfg.fPathOut,"bulk_prev.h5")])

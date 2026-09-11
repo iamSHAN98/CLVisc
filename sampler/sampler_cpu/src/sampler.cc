@@ -1066,7 +1066,7 @@ namespace {
                 }
             }
 
-            if(oneline.size()==4 && !oneline[3].compare("end"))
+            if(oneline.size()==7 && !oneline[3].compare("end"))
 		    {
 	            fpmag<<"# event start " << eventid<<" out "<< particles_.size()<<std::endl;
                 for ( const auto & par : particles_ ) {
